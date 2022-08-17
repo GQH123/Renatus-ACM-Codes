@@ -1,0 +1,63 @@
+#include <bits/stdc++.h>
+#define rep(i, l, r) for (register int i = l; i <= r; i++)
+#define per(i, r, l) for (register int i = r; i >= l; i--)
+#define srep(i, l, r) for (register int i = l; i < r; i++)
+#define sper(i, r, l) for (register int i = r; i > l; i--)
+using namespace std;
+
+
+struct point{
+	int x, y, v, id;
+	point(int x, int y, int v) : x(x), y(y), v(v){}
+	bool operator < (const point b) const{
+		return (v != b.v) ? v < b.v : ((x != b.x) ? x < b.x : y < b.y);
+	}
+}p[maxn], _p[maxn];
+
+
+int n;
+
+
+namespace CAL{
+	double cross(point a, point b, point c){	
+		return (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x);
+	}
+	double distsqr(point a, point b){
+		return (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y);
+	}
+	bool cmp(point a, point b){
+		double t = cross(pivot, a, b);
+		return sig(t) == 1 || sig(t) == 0 && sig(distsqr(pivot, a) - distsqr(pivot, b)) == -1;
+	}
+	int n;
+	point p[maxn], pp[maxn];
+	void get_convex(){
+		int i, k, top;
+		srep(i, 0, n) pp[i] = p[i];
+		for (k = 0, i = 1; i < n; i++) if (pp[i].y < pp[k].y || (pp[i].y == pp[k].y && pp[i].x < pp[k].x)) k = i;
+		pivot = pp[k]; pp[k] = pp[0]; pp[0] = pivot;
+		sort(pp + 1, pp + 1 + n, cmp);
+		stck[0] = pp[0]; stck[1] = pp[1];
+		for (top = 1, t = 2; i < n; i++){
+			while (top && sig(cross(pp[i], stck[
+		}
+	}
+}
+
+int main(){
+	scanf("%d", &n);
+	rep(i, 1, n) scanf("%d%d%d", &p[i].x, &p[i].y, &p[i].v), p[i].id = i;
+	sort(p + 1, p + 1 + n);
+	int m = 0;
+	per(i, n, 1){
+		int nowv = p[i].v;
+		if (i >= 1 && p[i].v == nowv){
+			CAL :: p[++m] = p[i];
+			i--;
+		}
+		break;
+	}
+	CAL :: n = m;
+	CAL :: get_convex();
+	return 0;
+}

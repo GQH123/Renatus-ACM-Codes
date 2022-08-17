@@ -1,0 +1,34 @@
+2
+18
+Errmsg ON
+$a = 1
+$b = 2
+$c = 3
+Print $a
+Print $d
+Dump $c
+Dump $sdkjfas
+Errmsg OFF
+Print $_
+
+
+
+
+Print OK
+Panic
+Errmsg ON
+Print A
+13
+Errmsg ON
+$A = 3
+$B = 5
+Print $a
+Print $B
+A = 5
+A = 10
+Print A
+Errmsg OFF
+B = ""
+B = "A"
+Dump B
+Dump C

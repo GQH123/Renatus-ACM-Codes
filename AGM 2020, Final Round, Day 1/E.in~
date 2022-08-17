@@ -1,0 +1,22 @@
+5
+3
+= 5 True
+> 3 True
+= 1 False
+2
+> 4 True
+= 4 True
+3
+= 5 True
+> 3 True
+= 1 False
+2
+> 4 True
+= 4 True
+2
+> 4 True
+< 5 True
+1
+< -5 True
+1
+> -5 True

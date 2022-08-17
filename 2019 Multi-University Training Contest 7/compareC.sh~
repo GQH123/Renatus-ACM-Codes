@@ -1,0 +1,17 @@
+#!/bin/bash
+t=0 //数据组数
+while true; do
+    let "t=$t + 1" echox
+    printf $t                        //bash语言的变量前需要加 $
+    printf ": "
+    ./genB            //数据生成器
+    ./B      //需要对拍的程序
+    ./B_BruteForce        //标程
+     
+    if diff B.out B.ans; then
+        printf "Accepted\n"
+    else
+        printf "Wrong Answer\n"
+        break
+    fi
+done

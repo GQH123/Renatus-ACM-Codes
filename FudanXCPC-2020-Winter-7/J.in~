@@ -1,0 +1,3 @@
+inv = get_inv(1000000);
+	P = p * inv % M;
+	Q = q * inv % M;
